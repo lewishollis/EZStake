@@ -1,0 +1,21 @@
+<!-- app/views/profiles/edit.html.erb -->
+
+<h1>Edit Your Profile</h1>
+
+<%= form_for(current_user, url: profile_path, method: :patch, multipart: true) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <!-- Add more fields as needed -->
+
+  <div>
+    <%= f.submit 'Update Profile' %>
+  </div>
+<% end %>

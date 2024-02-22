@@ -1,5 +1,20 @@
+<!-- app/views/pages/home.html.erb -->
+
 <% if user_signed_in? %>
-  You are logged in!
+  <p>Welcome, <%= current_user.email %>!</p>
+
+  <div>
+    <%= link_to "View Your Sweepstakes", profile_path %>
+  </div>
+
+  <div>
+    <%= link_to "Create a New Sweepstake", new_sweepstake_path %>
+  </div>
+
+  <div>
+    <%= link_to "Your Profile", profile_path %>
+  </div>
+
 <% else %>
- Oi, sign in!
+  <p>Please <%= link_to "sign in", new_user_session_path %> to explore sweepstakes!</p>
 <% end %>

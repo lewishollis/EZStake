@@ -1,0 +1,17 @@
+<!-- app/views/profiles/show.html.erb -->
+
+<h1>Your Profile</h1>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<h2>Your Sweepstakes</h2>
+<% if @user_sweepstakes.present? %>
+  <ul>
+    <% @user_sweepstakes.each do |sweepstake| %>
+      <li><%= sweepstake.name %> - <%= sweepstake.description %></li>
+      <!-- Add other details as needed -->
+    <% end %>
+  </ul>
+<% else %>
+  <p>You are not involved in any sweepstakes yet.</p>
+<% end %>

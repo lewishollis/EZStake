@@ -1,0 +1,43 @@
+<!-- app/views/sweepstakes/new.html.erb -->
+
+<h1>Create a New Sweepstake</h1>
+
+<%= form_with(model: @sweepstake, url: sweepstakes_path, method: :post) do |form| %>
+  <% if @sweepstake.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sweepstake.errors.count, "error") %> prohibited this sweepstake from being saved:</h2>
+
+      <ul>
+        <% @sweepstake.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.datetime_local_field :start_date, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_local_field :end_date, required: true %>
+  </div>
+
+  <!-- Add other fields as needed -->
+
+  <div class="actions">
+    <%= form.submit "Create Sweepstake" %>
+  </div>
+<% end %>
