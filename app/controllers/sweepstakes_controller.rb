@@ -4,7 +4,10 @@ class SweepstakesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # Display a list of sweepstakes or sweepstake groups
+    @sweepstakes = Sweepstake.all
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def new
