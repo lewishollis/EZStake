@@ -3,15 +3,22 @@
 class SweepstakesController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @sweepstake = Sweepstake.new
+  end
+
   def index
     @sweepstakes = Sweepstake.all
+
     respond_to do |format|
+      format.html
       format.turbo_stream
     end
   end
 
-  def new
-    @sweepstake = current_user.sweepstakes.build
+  def show
+    @user = User.find(params[:id])
+    @user_sweepstakes = @user.sweepstakes
   end
 
   def create
@@ -20,14 +27,16 @@ class SweepstakesController < ApplicationController
     if @sweepstake.save
       redirect_to sweepstakes_path, notice: 'Sweepstake created successfully.'
     else
+      puts @sweepstake.errors.full_messages
+
       render :new
     end
   end
 
-  private
+private
 
   def sweepstake_params
-    # Define the permitted parameters for a sweepstake
-    params.require(:sweepstake).permit(:name, :description, :other_attributes)
+    params.require(:sweepstake).permit(:name, :description, :start_date, :end_date, :api_url).merge(user_id: current_user.id)
   end
+
 end
