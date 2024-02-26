@@ -1,24 +1,9 @@
 # app/controllers/sweepstakes_controller.rb
-
 class SweepstakesController < ApplicationController
   before_action :authenticate_user!
 
   def new
     @sweepstake = Sweepstake.new
-  end
-
-  def index
-    @sweepstakes = Sweepstake.all
-
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @user_sweepstakes = @user.sweepstakes
   end
 
   def create
@@ -32,6 +17,19 @@ class SweepstakesController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @sweepstakes = Sweepstake.all
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
+
+  def show
+    @user_sweepstakes = current_user.sweepstakes
+  end
+
 
 private
 

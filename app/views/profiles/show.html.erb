@@ -1,15 +1,12 @@
 <h1>Your Profile</h1>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+<p>Name: <%= current_user.name %></p>
+<p>Email: <%= current_user.email %></p>
+<p>User ID: <%= current_user.id %></p>
 
 <h2>Your Sweepstakes</h2>
-<% if @user_sweepstakes.present? %>
   <ul>
-    <% @user_sweepstakes.each do |sweepstake| %>
+    <% current_user.sweepstakes.each do |sweepstake| %>
       <li><%= sweepstake.name %> - <%= sweepstake.description %></li>
       <!-- Add other details as needed -->
     <% end %>
   </ul>
-<% else %>
-  <p>You are not involved in any sweepstakes yet.</p>
-<% end %>
