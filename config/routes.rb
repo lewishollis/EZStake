@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # Add routes for the profiles controller
   resource :profile, only: [:show, :edit, :update]
-  resources :sweepstakes
+  resources :sweepstakes, only: [:show, :new, :create]
 
   # ... other routes if any
 end

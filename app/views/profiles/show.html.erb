@@ -6,6 +6,8 @@
 <h2>Your Sweepstakes</h2>
 <ul>
   <% Sweepstake.where(user_id: @current_user.id).each do |sweepstake| %>
-    <li><%= sweepstake.name %> - <%= sweepstake.description %></li>
+    <li>
+      <%= link_to "#{sweepstake.name} - #{sweepstake.description}", sweepstake_path(sweepstake) %>
+    </li>
   <% end %>
 </ul>

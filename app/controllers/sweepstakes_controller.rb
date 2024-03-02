@@ -26,10 +26,9 @@ class SweepstakesController < ApplicationController
     end
   end
 
-def show
-  @user = current_user
-  @sweepstakes = @user.sweepstakes.includes(:other_associations)
-end
+  def show
+    @sweepstake = Sweepstake.find(params[:id])
+  end
 
 private
 
