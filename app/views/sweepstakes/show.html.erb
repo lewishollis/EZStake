@@ -3,3 +3,5 @@
 <p>Description: <%= @sweepstake.description %></p>
 
 <!-- Add more details as needed -->
+<%= link_to "Add User", add_user_sweepstake_user_path(@sweepstake), method: :post %>
+<%= link_to "Remove User", remove_user_sweepstake_user_path(@sweepstake), method: :delete %>
