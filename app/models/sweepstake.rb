@@ -1,4 +1,5 @@
 class Sweepstake < ApplicationRecord
+  belongs_to :user
   has_many :user_sweepstakes
   has_many :users, through: :user_sweepstakes
 

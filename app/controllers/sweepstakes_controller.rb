@@ -26,10 +26,10 @@ class SweepstakesController < ApplicationController
     end
   end
 
-  def show
-    @user_sweepstakes = current_user.sweepstakes
-  end
-
+def show
+  @user = current_user
+  @sweepstakes = @user.sweepstakes.includes(:other_associations)
+end
 
 private
 
