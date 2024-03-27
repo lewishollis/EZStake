@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Routes for SweepstakesUsersController
   resources :sweepstake_users, only: [] do
     member do
-      post 'add_user'
+      get 'add_user'
       delete 'remove_user'
     end
   end
